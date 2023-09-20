@@ -6,4 +6,8 @@ public class Attaque extends Bataille {
 		super(nombre, t);
 	}
 
+	@Override
+	public String toString() {
+		return "Oh non ! Vous subissez un(e) " + type.toString() + " ! ";
+	}
 }

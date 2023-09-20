@@ -6,4 +6,9 @@ public class Parade extends Bataille {
 		super(nombre, t);
 	}
 
+	
+	@Override
+	public String toString() {
+		return "Heureusement, vous évitez un(e) " + type.toString() + ", c'est reparti ! " ;
+	}
 }

@@ -10,4 +10,9 @@ public class FinLimite extends Limite {
 	public String toString() {
 		return "Vous n'êtes désormais plus limité à 50 km ! ";
 	}
+	
+	@Override
+	public boolean equals(Object carte) {
+		return (carte instanceof FinLimite);
+	}
 }

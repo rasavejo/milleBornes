@@ -9,6 +9,13 @@ public class Parade extends Bataille {
 	
 	@Override
 	public String toString() {
-		return "Heureusement, vous évitez un(e) " + type.toString() + ", c'est reparti ! " ;
+		return "Heureusement, vous évitez un(e) " + getType().toString() + ", c'est reparti ! " ;
+	}
+	
+	@Override
+	public boolean equals(Object carte) {
+		if (carte instanceof Parade parade)
+			return parade.getType() == getType();
+		else return false;
 	}
 }

@@ -8,6 +8,14 @@ public class Attaque extends Bataille {
 
 	@Override
 	public String toString() {
-		return "Oh non ! Vous subissez un(e) " + type.toString() + " ! ";
+		return "Oh non ! Vous subissez un(e) " + getType().toString() + " ! ";
 	}
+	
+	@Override
+	public boolean equals(Object carte) {
+		if (carte instanceof Attaque attaque)
+			return attaque.getType() == getType();
+		else return false;
+	}
+	
 }

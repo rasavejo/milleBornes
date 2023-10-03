@@ -1,5 +1,10 @@
 package testsfonctionnel;
 
+import utils.Utils;
+
+import java.util.List;
+import java.util.ArrayList;
+
 import cartes.Attaque;
 import cartes.Borne;
 import cartes.Botte;
@@ -21,6 +26,8 @@ public class Test {
 		Sabot sabot = new Sabot(110);
 		sabot.ajouterFamilleCarte(par,att,botte);
 		
+		System.out.println("TEST SABOT");
+		
 		for (int i = 0 ; i < 7; i++)  {
 			System.out.println((sabot.pioche()).toString());
 		}
@@ -39,6 +46,7 @@ public class Test {
 		System.out.println(sabot.pioche());
 		
 		
+		System.out.println("TEST EQUALS");
 		
 		Carte par2 = new Parade(5,Type.ACCIDENT);
 		System.out.println(par2.equals(par));
@@ -55,13 +63,63 @@ public class Test {
 		
 		System.out.println(borne.equals(borne2));
 		
-		JeuDeCarte jeu = new JeuDeCarte();
-		Carte[] liste = jeu.getListeCartes();
+		System.out.println("TEST JEU/UTILS");
 		
-		for (int i = 0;i<liste.length;i++) {
-			System.out.println(liste[i]);
+		JeuDeCarte jeu = new JeuDeCarte();
+		List<Carte> liste = jeu.getListeCartes();
+		
+		for (int i = 0;i<liste.size();i++) {
+			System.out.println(liste.get(i));
 		}
 		System.out.println(jeu.checkCounts());
+		
+		
+		List<Integer> l = new ArrayList<>();
+		List<Integer> l2 = new ArrayList<>();
+		List<Integer> l3 = new ArrayList<>();
+		
+		l.add(1);
+		l.add(2);
+		l.add(3);
+		l.add(4);
+		l.add(5);
+	
+		
+		System.out.println(Utils.extraire(l));
+
+		
+		
+		for (int i = 0;i<4;i++) System.out.println(l.get(i));
+		
+		for (int i = 0;i<4;i++) l3.add(l.get(i));
+		l2 = Utils.melanger(l);
+		
+		System.out.println("MELANGE");
+		
+		for (int i = 0;i<4;i++) System.out.println(l2.get(i));
+		
+		System.out.println(Utils.verifierMelange(l2,l3));
+		
+		Utils.extraire(l2);
+		
+		System.out.println(Utils.verifierMelange(l2,l3));
+		
+		List<Integer> lis = new ArrayList<>();
+		lis.add(1);
+		lis.add(1);
+		lis.add(2);
+		lis.add(1);
+		lis.add(3);
+		
+		List<Integer> lis2 = new ArrayList<>();
+		
+		lis2 = Utils.rassembler(lis);
+		for (int i = 0;i<5;i++) System.out.println(lis2.get(i));
+		
+		System.out.println(Utils.verifierRassemblement(lis));
+		System.out.println(Utils.verifierRassemblement(lis2));
+		
+		
 	}
 
 }

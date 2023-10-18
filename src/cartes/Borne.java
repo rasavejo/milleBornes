@@ -7,6 +7,14 @@ public class Borne extends Carte {
 		super(nombre);
 		this.km = km;
 	}
+	
+	
+
+	public int getKm() {
+		return km;
+	}
+
+
 
 	@Override
 	public String toString() {

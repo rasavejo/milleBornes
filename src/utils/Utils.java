@@ -32,6 +32,14 @@ public class Utils {
 		}
 		return retour;
 	}
+	
+/*	private <C> int frequence(List<C> liste, C elt) {
+		int total = 0;
+		for (int i = 0;i <liste.size();i++)
+			if (liste.get(i) == elt) total ++;
+		return total;
+	}
+*/
 
 	public static <C> boolean verifierMelange(List<C> liste1, List<C> liste2) {
 		boolean verif = true;
@@ -52,7 +60,6 @@ public class Utils {
 			C elt = liste.get(i);
 			if (!retour.contains(elt)) {
 				retour.add(elt);
-
 				for (int j = i + 1; j < liste.size(); j++) {
 					C elt2 = liste.get(j);
 					if (elt == elt2) {

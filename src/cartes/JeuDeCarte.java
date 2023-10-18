@@ -31,7 +31,6 @@ public class JeuDeCarte {
 		typesDeCarte[17] = new Borne(12, 100);
 		typesDeCarte[18] = new Borne(4, 200);
 
-
 		List<Carte> liste = new ArrayList<>();
 		for (int i = 0; i < 19; i++) {
 			Carte type = typesDeCarte[i];
@@ -46,14 +45,15 @@ public class JeuDeCarte {
 	public List<Carte> getListeCartes() {
 		return listeCartes;
 	}
-	
+
 	public boolean checkCounts() {
 		boolean verif = true;
-		for (int i = 0;i<19 && verif;i++) {
+		for (int i = 0; i < 19 && verif; i++) {
 			int compteur = 0;
 			Carte carte = typesDeCarte[i];
-			for (int j = 0;j<106;j++) {
-				if (listeCartes.get(j).equals(carte)) compteur ++;
+			for (int j = 0; j < 106; j++) {
+				if (listeCartes.get(j).equals(carte))
+					compteur++;
 			}
 			verif = ((compteur == carte.getNombre()));
 		}

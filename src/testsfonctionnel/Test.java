@@ -14,6 +14,7 @@ import cartes.FinLimite;
 import cartes.JeuDeCarte;
 import cartes.Parade;
 import cartes.Probleme.Type;
+import jeu.Joueur;
 import jeu.Sabot;
 import jeu.Sabot.Iterateur;
 
@@ -26,7 +27,7 @@ public class Test {
 		Sabot sabot = new Sabot(110);
 		sabot.ajouterFamilleCarte(par,att,botte);
 		
-		System.out.println("TEST SABOT");
+		System.out.println("TEST SABOT\n");
 		
 		for (int i = 0 ; i < 7; i++)  {
 			System.out.println((sabot.pioche()).toString());
@@ -46,7 +47,7 @@ public class Test {
 		System.out.println(sabot.pioche());
 		
 		
-		System.out.println("TEST EQUALS");
+		System.out.println("\nTEST EQUALS\n");
 		
 		Carte par2 = new Parade(5,Type.ACCIDENT);
 		System.out.println(par2.equals(par));
@@ -63,7 +64,7 @@ public class Test {
 		
 		System.out.println(borne.equals(borne2));
 		
-		System.out.println("TEST JEU/UTILS");
+		System.out.println("\nTEST JEU/UTILS\n");
 		
 		JeuDeCarte jeu = new JeuDeCarte();
 		List<Carte> liste = jeu.getListeCartes();
@@ -94,7 +95,7 @@ public class Test {
 		for (int i = 0;i<4;i++) l3.add(l.get(i));
 		l2 = Utils.melanger(l);
 		
-		System.out.println("MELANGE");
+		System.out.println("\nMELANGE\n");
 		
 		for (int i = 0;i<4;i++) System.out.println(l2.get(i));
 		
@@ -118,6 +119,12 @@ public class Test {
 		
 		System.out.println(Utils.verifierRassemblement(lis));
 		System.out.println(Utils.verifierRassemblement(lis2));
+		
+		System.out.println("\n TEST GET KM\n");
+		
+		Joueur joueur = new Joueur("MOI");
+		
+		joueur.donner(borne);
 		
 		
 	}

@@ -8,11 +8,11 @@ public class Botte extends Probleme {
 
 	@Override
 	public String toString() {
-		return "Cette botte vous protège de l'avarie " + getType().toString() + " ! "; 
+		return "Cette botte vous protï¿½ge de l'avarie " + getType().toString() + " ! "; 
 	}
 	
 	@Override
-	public boolean equals (Object carte) {
+	public boolean equals(Object carte) {
 		if (carte instanceof Botte botte)
 			return botte.getType() == getType();
 		else return false;

@@ -2,6 +2,7 @@ package jeu;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -69,12 +70,41 @@ public class Joueur {
 	}
 	
 	private boolean prioritaire() {
-		return bottes.contains(new Botte(1,Type.FEU));
+		boolean verif = false;
+		
+		for (Iterator <Botte> it = bottes.iterator();it.hasNext() && !verif;) {
+			Botte botte = it.next();
+			verif = botte.equals(new Botte(1,Type.FEU));
+		}
+		
+		return verif;
 	}
 	
 	public int getLimite() {
-		if (limites.size() == 0 || limites.get(0) instanceof FinLimite || prioritaire()) return 200;
+		if (limites.isEmpty() || limites.get(0) instanceof FinLimite || prioritaire()) return 200;
 		return 50;
+	}
+	
+	public boolean estBloque() {
+		if (batailles.isEmpty()) return !prioritaire();
+		
+		Bataille sommet = batailles.get(0);
+		
+		if (sommet.equals(new Parade(1,Type.FEU))) return false;
+		if (sommet instanceof Parade && prioritaire()) return false;
+		if (sommet.equals(new Attaque(1,Type.FEU)) && prioritaire()) return false;
+		
+		Type type = sommet.getType();
+		
+		Boolean verif = false;
+		
+		for (Iterator <Botte> it = bottes.iterator();it.hasNext() && (!verif) ;) {
+			Botte botte = it.next();
+			verif = botte.equals(new Botte(1,type));
+		}
+		
+		return !(verif && prioritaire());
+		
 	}
 
 
@@ -88,6 +118,11 @@ public class Joueur {
 		if (objet instanceof Joueur joueur)
 			return joueur.getNom().equals(nom);
 		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return nom.hashCode() * 31;
 	}
 
 }

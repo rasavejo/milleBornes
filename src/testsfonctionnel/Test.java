@@ -4,14 +4,17 @@ import utils.Utils;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 
 import cartes.Attaque;
+import cartes.Bataille;
 import cartes.Borne;
 import cartes.Botte;
 import cartes.Carte;
 import cartes.DebutLimite;
 import cartes.FinLimite;
 import cartes.JeuDeCarte;
+import cartes.Limite;
 import cartes.Parade;
 import cartes.Probleme.Type;
 import jeu.Joueur;
@@ -52,9 +55,9 @@ public class Test {
 		Carte par2 = new Parade(5,Type.ACCIDENT);
 		System.out.println(par2.equals(par));
 		
-		Carte lim = new DebutLimite(1);
+		Limite lim = new DebutLimite(1);
 		Carte lim2 = new DebutLimite(2);
-		Carte lim3 = new FinLimite(3);
+		Limite lim3 = new FinLimite(3);
 		
 		System.out.println(lim.equals(lim2));
 		System.out.println(lim.equals(lim3));
@@ -107,15 +110,18 @@ public class Test {
 		
 		List<Integer> lis = new ArrayList<>();
 		lis.add(1);
+		lis.add(3);
 		lis.add(1);
 		lis.add(2);
 		lis.add(1);
 		lis.add(3);
+		lis.add(3);
+		lis.add(4);
 		
 		List<Integer> lis2 = new ArrayList<>();
 		
 		lis2 = Utils.rassembler(lis);
-		for (int i = 0;i<5;i++) System.out.println(lis2.get(i));
+		for (int i = 0;i<8;i++) System.out.println(lis2.get(i));
 		
 		System.out.println(Utils.verifierRassemblement(lis));
 		System.out.println(Utils.verifierRassemblement(lis2));
@@ -124,8 +130,89 @@ public class Test {
 		
 		Joueur joueur = new Joueur("MOI");
 		
-		joueur.donner(borne);
+		List<Borne> bornes = joueur.getBornes();
 		
+		bornes.add(borne);
+		
+		System.out.println(joueur.getKM());
+		
+		bornes.add(borne);
+		bornes.add(borne);
+		bornes.add(borne);
+		
+		System.out.println(joueur.getKM() == 200);
+		
+		System.out.println("\n TEST GET LIMITE\n");
+		
+		System.out.println(joueur.getLimite());
+		
+		List<Limite> limites = joueur.getLimites();
+		
+		limites.add(0,lim);
+		
+		System.out.println(joueur.getLimite());
+		
+		limites.add(0,lim3);
+		
+		System.out.println(joueur.getLimite());
+		
+		limites.add(0,lim);
+		
+		System.out.println(joueur.getLimite());
+		
+		Set<Botte> bottes = joueur.getBottes();
+		
+		Botte botteFeu = new Botte(1,Type.FEU);
+		
+		bottes.add(botteFeu);
+		
+		System.out.println(joueur.getLimite());
+		
+		
+		
+		System.out.println("\n TEST EST BLOQUE\n");
+		
+		Joueur j = new Joueur("Rasa");
+		
+		List<Bataille> bat = j.getBatailles();
+		Set<Botte> bot = j.getBottes();
+		
+		System.out.println(j.estBloque());
+		
+		bat.add(new Attaque(1,Type.FEU));
+		
+		System.out.println(j.estBloque());
+		
+		bot.add(botteFeu);
+		
+		System.out.println(j.estBloque());
+		
+		bat.add(0,new Attaque(1,Type.ACCIDENT));
+		
+		System.out.println(j.estBloque());
+		
+		
+		Botte as = new Botte(1,Type.ACCIDENT);
+		bot.add(as);
+		
+		System.out.println(j.estBloque());
+		
+		bat.add(0, new Attaque(1,Type.ESSENCE));
+		
+		System.out.println(j.estBloque());
+		
+		bat.add(0,new Parade(1,Type.ESSENCE));
+		
+		System.out.println(j.estBloque());
+		
+		bot.remove(botteFeu);
+		bot.remove(as);
+		
+		System.out.println(j.estBloque());
+		
+		bat.add(0,new Parade(1,Type.FEU));
+		
+		System.out.println(j.estBloque());
 		
 	}
 

@@ -32,14 +32,11 @@ public class Utils {
 		}
 		return retour;
 	}
-	
-/*	private <C> int frequence(List<C> liste, C elt) {
-		int total = 0;
-		for (int i = 0;i <liste.size();i++)
-			if (liste.get(i) == elt) total ++;
-		return total;
-	}
-*/
+
+	/*
+	 * private <C> int frequence(List<C> liste, C elt) { int total = 0; for (int i =
+	 * 0;i <liste.size();i++) if (liste.get(i) == elt) total ++; return total; }
+	 */
 
 	public static <C> boolean verifierMelange(List<C> liste1, List<C> liste2) {
 		boolean verif = true;
@@ -58,13 +55,12 @@ public class Utils {
 		List<C> retour = new ArrayList<>();
 		for (int i = 0; i < liste.size(); i++) {
 			C elt = liste.get(i);
-			if (!retour.contains(elt)) {
-				retour.add(elt);
-				for (int j = i + 1; j < liste.size(); j++) {
-					C elt2 = liste.get(j);
-					if (elt == elt2) {
-						retour.add(elt2);
-					}
+			retour.add(elt);
+			for (int j = liste.size() - 1; j > i; j--) {
+				C elt2 = liste.get(j);
+				if (elt == elt2) {
+					liste.remove(j);
+					retour.add(elt2);
 				}
 			}
 
@@ -81,16 +77,25 @@ public class Utils {
 			C elt = it.next();
 			Iterator<C> it2 = liste.iterator();
 			C elt2;
+			
+			// L'itérateur 2 rattrape le premier
+			
+			
 			if (it2.hasNext()) {
 				do {
 					elt2 = it2.next();
 				} while (elt != elt2);
 			}
+			
+			// On passe les élèments égaux.
+			
 			if (it2.hasNext()) {
 				do {
 					elt2 = it2.next();
 				} while (elt == elt2);
 			}
+			
+			// On vérifie que les éléments suivants sont différent
 
 			while (it2.hasNext() && verif) {
 				elt2 = it2.next();

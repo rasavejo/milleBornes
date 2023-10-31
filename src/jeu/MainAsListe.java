@@ -11,8 +11,8 @@ public class MainAsListe implements Main {
 	Iterator<Carte> it = cartes.iterator();
 
 	public MainAsListe() {
-		
-	}
+   // Constructeurs toujours identique donc vide.
+ }
 
 	@Override
 	public void prendre(Carte carte) {
@@ -22,7 +22,8 @@ public class MainAsListe implements Main {
 
 	@Override
 	public void jouer(Carte carte) {
-		assert cartes.contains(carte);
+		if (!cartes.contains(carte)) 
+			throw new IllegalArgumentException("Vous n'avez pas cette carte");
 		cartes.remove(carte);
 	}
 

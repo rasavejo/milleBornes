@@ -55,7 +55,7 @@ public class JeuDeCarte {
 				if (listeCartes.get(j).equals(carte))
 					compteur++;
 			}
-			verif = ((compteur == carte.getNombre()));
+			verif = (compteur == carte.getNombre());
 		}
 		return verif;
 	}

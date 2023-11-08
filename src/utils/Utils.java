@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.List;
+import java.util.ListIterator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -69,37 +70,26 @@ public class Utils {
 	}
 
 	public static <C> boolean verifierRassemblement(List<C> liste) {
-		Iterator<C> it = liste.iterator();
+		ListIterator<C> it = liste.listIterator();
 
 		boolean verif = true;
 
 		for (int i = 0; i < liste.size() && verif; i++) {
-			C elt = it.next();
-			Iterator<C> it2 = liste.iterator();
-			C elt2;
-			
-			// L'itérateur 2 rattrape le premier
+			C eltRef = it.next();
+			ListIterator<C> it2 = liste.listIterator(i);
+			C eltCur;
 			
 			
 			if (it2.hasNext()) {
 				do {
-					elt2 = it2.next();
-				} while (elt != elt2);
+					eltCur = it2.next();
+				} while (eltRef == eltCur && it2.hasNext());
 			}
 			
-			// On passe les élèments égaux.
-			
-			if (it2.hasNext()) {
-				do {
-					elt2 = it2.next();
-				} while (elt == elt2);
-			}
-			
-			// On vérifie que les éléments suivants sont différent
 
 			while (it2.hasNext() && verif) {
-				elt2 = it2.next();
-				verif = (elt != elt2);
+				eltCur = it2.next();
+				verif = (eltCur != eltRef);
 			}
 		}
 		return verif;

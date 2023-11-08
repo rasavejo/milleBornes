@@ -16,6 +16,7 @@ import cartes.FinLimite;
 import cartes.JeuDeCarte;
 import cartes.Limite;
 import cartes.Parade;
+import cartes.Probleme;
 import cartes.Probleme.Type;
 import jeu.Joueur;
 import jeu.Sabot;
@@ -213,6 +214,15 @@ public class Test {
 		bat.add(0,new Parade(1,Type.FEU));
 		
 		System.out.println(j.estBloque());
+		
+		System.out.println("\n TEST APPLIQUER \n");
+		
+		Joueur jou = new Joueur("J");
+		Carte c1 = new Parade(0,Probleme.Type.FEU);
+		System.out.println("appliquer "+c1+":"+c1.appliquer(jou));
+		System.out.println("appliquer "+c1+":"+c1.appliquer(jou));
+		Carte c2 = new Attaque(0,Probleme.Type.FEU);
+		System.out.println("appliquer "+c2+":"+c2.appliquer(jou));
 		
 	}
 

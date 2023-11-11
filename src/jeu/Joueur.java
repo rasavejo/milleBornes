@@ -16,6 +16,16 @@ public class Joueur {
 	List<Bataille> batailles = new ArrayList<>();
 	Set<Botte> bottes = new HashSet<>();
 	Main main = new MainAsListe();
+	Jeu jeu;
+	
+
+	public Jeu getJeu() {
+		return jeu;
+	}
+
+	public void setJeu(Jeu jeu) {
+		this.jeu = jeu;
+	}
 
 	public Main getMain() {
 		return main;
@@ -134,6 +144,25 @@ public class Joueur {
 
 		return possible;
 
+	}
+	
+	
+	public Coup selectionner() {
+		Set<Coup> ensemble = coupsPossible(jeu.getJoueurs());
+		if (ensemble.isEmpty()) return null;
+		Iterator<Coup> it = ensemble.iterator();
+		Coup coup = it.next();
+		coup.jouer(this);
+		return coup;
+	}
+	
+	public Coup rendreCarte() {
+		Set<Coup> ensemble = coupsParDefaut();
+		if (ensemble.isEmpty()) return null;
+		Iterator<Coup> it = ensemble.iterator();
+		Coup coup = it.next();
+		coup.jouer(this);
+		return coup;
 	}
 
 	@Override

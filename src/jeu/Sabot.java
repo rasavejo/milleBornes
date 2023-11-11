@@ -30,7 +30,7 @@ public class Sabot implements Iterable<Carte> {
 		return nbCartes == 0;
 	}
 
-	private void ajouterCarte(Carte carte) throws IllegalStateException {
+	public void ajouterCarte(Carte carte) throws IllegalStateException {
 		if (nbCartes == cartes.length)
 			throw new IllegalStateException();
 		cartes[nbCartes] = carte;

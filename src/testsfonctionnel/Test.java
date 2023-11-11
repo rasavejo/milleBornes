@@ -223,6 +223,17 @@ public class Test {
 		System.out.println("appliquer "+c1+":"+c1.appliquer(jou));
 		Carte c2 = new Attaque(0,Probleme.Type.FEU);
 		System.out.println("appliquer "+c2+":"+c2.appliquer(jou));
+		System.out.println("appliquer "+borne2+":"+borne2.appliquer(jou));
+		System.out.println("appliquer "+botteFeu+":"+botteFeu.appliquer(jou));
+		System.out.println("appliquer "+borne2+":"+borne2.appliquer(jou));
+		System.out.println("appliquer "+borne2+":"+borne2.appliquer(jou));
+		System.out.println("appliquer "+lim+":"+lim.appliquer(jou));
+		Carte c3 = new Attaque(0,Probleme.Type.ESSENCE);
+		System.out.println("appliquer "+c3+":"+c3.appliquer(jou));
+		System.out.println("appliquer "+borne2+":"+borne2.appliquer(jou));
+		System.out.println("appliquer "+par+":"+par.appliquer(jou));
+		Carte c4 = new Parade(0,Probleme.Type.ESSENCE);
+		System.out.println("appliquer "+c4+":"+c4.appliquer(jou));
 		
 	}
 
